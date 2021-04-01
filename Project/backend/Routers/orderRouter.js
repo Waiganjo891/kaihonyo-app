@@ -31,7 +31,7 @@ orderRouter.get('/:id', isAuth, expressAsyncHandler(async(req, res) => {
         res.send(order);
     }
     else {
-        res.status(404)({message: 'Message not found'});
+        res.status(404)({message: 'Order not found'});
     }
 })
 );
