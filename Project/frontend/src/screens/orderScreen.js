@@ -26,9 +26,9 @@ export default function OrderScreen(props) {
             <li>
               <div className="card card-body">
                 <h2>Shipping</h2>
-                <p><strong>Name:</strong> {cart.shippingAddress.fullName} <br />
-                 <strong>Address:</strong> {cart.shippingAddress.road}, {cart.shippingAddress.area}
-                 {cart.shippingAddress.town}, {cart.shippingAddress.city}, {cart.shippingAddress.postalcode}
+                <p><strong>Name:</strong> {order.shippingAddress.fullName} <br />
+                 <strong>Address:</strong> {order.shippingAddress.road}, {order.shippingAddress.area}
+                 {order.shippingAddress.town}, {order.shippingAddress.city}, {order.shippingAddress.postalcode}
                 </p>
                 {order.isDelivered ? (
                   <MessageBox variant="success">
