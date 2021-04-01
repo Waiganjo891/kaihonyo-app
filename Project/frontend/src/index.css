@@ -172,6 +172,10 @@ img.large{
   color: #a02020;
   background-color: #ffe0e0e0;
 }
+.alert-success {
+  color: #20a020;
+  background-color: #eeffe0;
+}
 .rating span {
   color: #f0c040;
   margin: 0.1rem;
