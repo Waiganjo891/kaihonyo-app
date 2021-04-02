@@ -4,12 +4,12 @@ import { BrowserRouter, Link, Route} from "react-router-dom";
 import { signout } from "./actions/userActions.js";
 import CartScreen from "./screens/cartScreen.js";
 import HomeScreen from "./screens/HomeScreen.js";
+import OrderHistoryScreen from "./screens/OrderHistoryScreens.js";
 import OrderScreen from "./screens/orderScreen.js";
-import PaymentMethodScreen from "./screens/paymentMethodScreens.js";
+import PaymentMethodScreen from "./screens/PaymentMethod.js";
 import PlaceOrderScreen from "./screens/placeOrderScreen.js";
 import ProductScreen from "./screens/ProductScreen.js";
 import RegisterScreen from "./screens/Register Screen.js";
-import ShippingAddressScreen from "./screens/ShippingAddressScreen.js";
 import SigninScreen from "./screens/signinScreen.js";
 
 function App() {
@@ -41,6 +41,7 @@ function App() {
                         {userInfo.name} <i className="fa fa-caret-down"></i>{''} 
                         </Link>
                       <ul className="dropdown-content">
+                      <li> <Link to="/orderhistory">Order History</Link> </li>
                         <Link className="head" to="#signout" onClick={signoutHandler}>Sign out</Link>
                       </ul>
                       </div>
@@ -57,9 +58,9 @@ function App() {
               <Route path="/product/:id" component={ProductScreen}></Route>
               <Route path="/signin" component={SigninScreen}></Route>
               <Route path="/register" component={RegisterScreen}></Route>
-              <Route path="/shipping" component={ShippingAddressScreen}></Route>
-              <Route path="/payment" component={PaymentMethodScreen}></Route>
               <Route path="/placeorder" component={PlaceOrderScreen}></Route>
+              <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+              <Route path="/payment" component={PaymentMethodScreen}></Route>
               <Route path="/order/:id" component={OrderScreen}></Route>
               <Route path="/" component={HomeScreen} exact></Route>
             </main>

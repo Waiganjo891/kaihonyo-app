@@ -61,22 +61,6 @@ const successPaymentHandler = (paymentResult) => {
           <ul>
             <li>
               <div className="card card-body">
-                <h2>Shipping</h2>
-                <p><strong>Name:</strong> {order.shippingAddress.fullName} <br />
-                 <strong>Address:</strong> {order.shippingAddress.road}, {order.shippingAddress.area}
-                 {order.shippingAddress.town}, {order.shippingAddress.city}, {order.shippingAddress.postalcode}
-                </p>
-                {order.isDelivered ? (
-                  <MessageBox variant="success">
-                    Delivered at {order.deliveredAt}
-                  </MessageBox>
-                ) : (
-                  <MessageBox variant="danger">Not Delivered</MessageBox>
-                )}
-              </div>
-            </li>
-            <li>
-              <div className="card card-body">
                 <h2>Payment</h2>
                 <p>
                   <strong>Method:</strong> {order.paymentMethod}
@@ -131,12 +115,6 @@ const successPaymentHandler = (paymentResult) => {
                 <div className="row">
                   <div>Items</div>
                   <div>Ksh{order.itemsPrice.toFixed(2)}</div>
-                </div>
-              </li>
-              <li>
-                <div className="row">
-                  <div>Shipping</div>
-                  <div>Ksh{order.shippingPrice.toFixed(2)}</div>
                 </div>
               </li>
               <li>

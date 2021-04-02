@@ -5,6 +5,15 @@ import { isAuth } from "../util.js";
 
 const orderRouter = express.Router();
 
+orderRouter.get(
+  '/mine',
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id });
+    res.send(orders);
+  })
+);
+
 orderRouter.post('/', 
 isAuth,
 expressAsyncHandler(async (req, res) =>{
@@ -13,10 +22,8 @@ expressAsyncHandler(async (req, res) =>{
     } else {
         const order = new Order({
             orderItems: req.body.orderItems,
-            shippingAddress: req.body.shippingAddress,
             paymentMethod: req.body.paymentMethod,
             itemsPrice: req.body.itemsPrice,
-            shippingPrice: req.body.shippingPrice,
             totalPrice: req.body.totalPrice,
             user: req.user._id,
         });

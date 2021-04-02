@@ -11,32 +11,19 @@ const orderSchema = new mongoose.Schema({
         ref: 'Product', required: true},
     },
 ],
-shippingAddress: {
-    fullName: {type: String, required: true},
-    road: {type: String, required: true},
-    area: {type: String, required: true},
-    town: {type: String, required: true},
-    city: {type: String, required: true},
-    postalcode: {type: String, required: true},
-},
-paymentMethod: {
-    type: String, required: true
-},
 paymentResult: {
     id: String,
     status: String,
     update_time: String,
     email_address: String,
   },
+paymentMethod: { type: String, required: true },
 itemsPrice: {type: Number, required: true},
-shippingPrice: {type: Number, required: true},
 totalPrice: {type: Number, required: true},
 user: {type: mongoose.Schema.Types.ObjectId, 
     ref: 'User', required: true},
 isPaid: {type: Boolean, default: false},
 paidAt: {type: Date},
-isDelivered: {type: Boolean, default: false},
-deliveredAt: {type: Date},
 }, {
     timestamps: true,
 });
