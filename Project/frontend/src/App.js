@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Link, Route} from "react-router-dom";
 import { signout } from "./actions/userActions.js";
+import PrivateRoute from "./components/PrivateRoute.js";
 import CartScreen from "./screens/cartScreen.js";
 import HomeScreen from "./screens/HomeScreen.js";
 import OrderHistoryScreen from "./screens/OrderHistoryScreens.js";
@@ -9,6 +10,7 @@ import OrderScreen from "./screens/orderScreen.js";
 import PaymentMethodScreen from "./screens/PaymentMethod.js";
 import PlaceOrderScreen from "./screens/placeOrderScreen.js";
 import ProductScreen from "./screens/ProductScreen.js";
+import ProfileScreen from "./screens/profileScreen.js";
 import RegisterScreen from "./screens/Register Screen.js";
 import SigninScreen from "./screens/signinScreen.js";
 
@@ -41,8 +43,9 @@ function App() {
                         {userInfo.name} <i className="fa fa-caret-down"></i>{''} 
                         </Link>
                       <ul className="dropdown-content">
-                      <li> <Link to="/orderhistory">Order History</Link> </li>
-                        <Link className="head" to="#signout" onClick={signoutHandler}>Sign out</Link>
+                      <li> <Link className="head" to="/profile">User Profile</Link> </li>
+                      <li> <Link className="head" to="/orderhistory">Order History</Link> </li>
+                      <li><Link className="head" to="#signout" onClick={signoutHandler}>Sign out</Link> </li>
                       </ul>
                       </div>
                       ) :
@@ -59,7 +62,8 @@ function App() {
               <Route path="/signin" component={SigninScreen}></Route>
               <Route path="/register" component={RegisterScreen}></Route>
               <Route path="/placeorder" component={PlaceOrderScreen}></Route>
-              <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+              <PrivateRoute path="/orderhistory" component={OrderHistoryScreen}></PrivateRoute>
+              <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
               <Route path="/payment" component={PaymentMethodScreen}></Route>
               <Route path="/order/:id" component={OrderScreen}></Route>
               <Route path="/" component={HomeScreen} exact></Route>

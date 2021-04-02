@@ -4,11 +4,6 @@ import { savePaymentMethod } from '../actions/cartActions.js';
 import CheckoutSteps from '../components/CheckoutSteps.js';
 
 export default function PaymentMethodScreen(props) {
-    const cart = useSelector((state) => state.cart);
-    const { paymentMethod } = cart;
-    if (!userInfo) {
-      props.history.push('/signin');
-    }
   const [paymentMethod, setPaymentMethod] = useState('PayPal');
   const dispatch = useDispatch();
   const submitHandler = (e) => {
