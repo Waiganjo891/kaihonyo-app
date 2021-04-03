@@ -51,9 +51,25 @@ function App() {
                       ) :
                       (
                         <Link className="head" to="/signin">Sign in</Link>
-                      )
-                    }
-
+                      )}
+                    {userInfo && userInfo.isAdmin && (
+              <div className="dropdown">
+                <Link to="#admin">
+                  Admin <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/productlist">Products</Link>
+                  </li>
+                  <li>
+                    <Link to="/orderlist">Orders</Link>
+                  </li>
+                  <li>
+                    <Link to="/userlist">Users</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
                 </div>
             </header>
             <main>
@@ -64,8 +80,8 @@ function App() {
               <Route path="/placeorder" component={PlaceOrderScreen}></Route>
               <PrivateRoute path="/orderhistory" component={OrderHistoryScreen}></PrivateRoute>
               <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
-              <Route path="/payment" component={PaymentMethodScreen}></Route>
-              <Route path="/order/:id" component={OrderScreen}></Route>
+              <PrivateRoute path="/payment" component={PaymentMethodScreen}></PrivateRoute>
+              <PrivateRoute path="/order/:id" component={OrderScreen}></PrivateRoute>
               <Route path="/" component={HomeScreen} exact></Route>
             </main>
             <footer className="row center">

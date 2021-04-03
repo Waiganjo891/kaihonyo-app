@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { detailsUser } from "../actions/userActions.js";
+import { detailsUser, updateUserProfile } from "../actions/userActions.js";
 import LoadingBox from "../components/LoadingBox.js";
 import MessageBox from "../components/MessageBox.js";
 import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants.js";
