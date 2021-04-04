@@ -10,6 +10,7 @@ import OrderHistoryScreen from "./screens/OrderHistoryScreens.js";
 import OrderScreen from "./screens/orderScreen.js";
 import PaymentMethodScreen from "./screens/PaymentMethod.js";
 import PlaceOrderScreen from "./screens/placeOrderScreen.js";
+import ProductEditScreen from "./screens/productEditScreen.js";
 import ProductListScreen from "./screens/productListScreens.js";
 import ProductScreen from "./screens/ProductScreen.js";
 import ProfileScreen from "./screens/profileScreen.js";
@@ -77,6 +78,7 @@ function App() {
             <main>
               <Route path="/cart/:id?" component={CartScreen}></Route>
               <Route path="/product/:id" component={ProductScreen} exact></Route>
+              <AdminRoute path="/product/:id/edit" component={ProductEditScreen} exact></AdminRoute>
               <Route path="/signin" component={SigninScreen}></Route>
               <Route path="/register" component={RegisterScreen}></Route>
               <Route path="/placeorder" component={PlaceOrderScreen}></Route>

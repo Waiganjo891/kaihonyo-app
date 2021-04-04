@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { PRODUCT_CREATE_FAIL, PRODUCT_CREATE_REQUEST, PRODUCT_CREATE_SUCCESS, PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, 
-    PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS 
-} from "../constants/productConstants.js"
+    PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_UPDATE_FAIL, PRODUCT_UPDATE_REQUEST, 
+    PRODUCT_UPDATE_SUCCESS } from "../constants/productConstants.js"
 
 export const listProducts = () => async (dispatch) =>{
     dispatch({
@@ -43,5 +43,22 @@ export const createProduct = () => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message;
       dispatch({ type: PRODUCT_CREATE_FAIL, payload: message });
+    }
+  };
+
+  export const updateProduct = (product) => async (dispatch, getState) => {
+    dispatch({ type: PRODUCT_UPDATE_REQUEST, payload: product });
+    const { userSignin: { userInfo }, } = getState();
+    try {
+      const { data } = await Axios.put(`/api/products/${product._id}`, product, {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      });
+      dispatch({ type: PRODUCT_UPDATE_SUCCESS, payload: data });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: PRODUCT_UPDATE_FAIL, error: message });
     }
   };

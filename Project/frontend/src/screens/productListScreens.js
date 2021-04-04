@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../actions/productActions.js";
+import { createProduct, listProducts } from "../actions/productActions.js";
 import LoadingBox from "../components/LoadingBox.js";
 import MessageBox from "../components/MessageBox.js";
 import { PRODUCT_CREATE_RESET } from "../constants/productConstants.js";
