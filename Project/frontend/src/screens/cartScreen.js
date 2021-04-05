@@ -58,7 +58,7 @@ export default function CartScreen(props) {
                                             </select>
                                         </div>
                                         <div>
-                                            Ksh{item.price}
+                                            Ksh{item.price.toLocaleString("ksh")}
                                         </div>
                                         <div>
                                             <button type="button" onClick={() => removeFromCartHandler(item.product)} >Delete</button>
@@ -77,7 +77,7 @@ export default function CartScreen(props) {
                         <li>
             <h2> 
                 Total sum {cartItems.reduce((a, c) => a + c.qty, 0)} : Ksh 
-                {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+                {cartItems.reduce((a, c) => a + c.price * c.qty, 0).toLocaleString("ksh")}
                 </h2>
                         </li>
                         <li>

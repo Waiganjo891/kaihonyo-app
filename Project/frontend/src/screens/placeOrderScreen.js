@@ -55,7 +55,7 @@ export default function PlaceOrderScreen(props) {
                             <Link to={`/product/${item.product}`}>{item.name}</Link>
                                         </div>
                                         <div>
-                                           {item.qty} x Ksh{item.price} =Ksh{item.qty * item.price}
+                                           {item.qty} x Ksh{item.price.toLocaleString("ksh")} =Ksh{(item.qty * item.price).toLocaleString("ksh")}
                                         </div>
                                     </div>
                                 </li>
@@ -74,14 +74,8 @@ export default function PlaceOrderScreen(props) {
                             </li>
                             <li>
                                 <div className="row">
-                                    <div>Items</div>
-                                    <div>Ksh{cart.itemsPrice.toFixed(2)} </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="row">
                                     <div><strong>Total </strong></div>
-                                    <div><strong>Ksh{cart.totalPrice.toFixed(2)}</strong></div>
+                                    <div><strong>Ksh{cart.totalPrice.toLocaleString("ksh")}</strong></div>
                                 </div>
                             </li>
                             <li>

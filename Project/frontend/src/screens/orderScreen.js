@@ -95,7 +95,7 @@ const successPaymentHandler = (paymentResult) => {
                         </div>
 
                         <div>
-                          {item.qty} x Ksh{item.price} = Ksh{item.qty * item.price}
+                          {item.qty} x Ksh{item.price.toLocaleString("ksh")} = Ksh{(item.qty * item.price).toLocaleString("ksh")}
                         </div>
                       </div>
                     </li>

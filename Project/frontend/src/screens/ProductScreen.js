@@ -48,7 +48,7 @@ export default function ProductScreen(props) {
                             <li>
                                 <div className="row">
                                     <div>Price</div>
-    <div className="price">Ksh{product.price} </div>
+    <div className="price">Ksh{product.price.toLocaleString("ksh")} </div>
                                 </div>
                             </li>
                             <li>
