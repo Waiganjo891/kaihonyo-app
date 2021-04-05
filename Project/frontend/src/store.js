@@ -5,7 +5,7 @@ import { orderCreateReducer, orderDeleteReducer, orderDetailsReducer, orderListR
     orderPayReducer } from "./reducers/orderReducers.js";
 import { productCreateReducer, productDeleteReducer, productDetailsReducer, productListReducer, productUpdateReducer } from "./reducers/productReducers.js";
 import { userDeleteReducer, userDetailsReducer, userListReducer, userRegisterReducer, userSigninReducer, 
-    userUpdateProfileReducer } from "./reducers/userReducer.js";
+    userUpdateProfileReducer, userUpdateReducer} from "./reducers/userReducer.js";
 const initialState = {
     userSignin: {
         userInfo: localStorage.getItem('userInfo')? JSON.parse(localStorage.getItem('userInfo')) : null,
@@ -27,6 +27,7 @@ const reducer = combineReducers({
     orderMineList: orderMineListReducer,
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
+    userUpdate: userUpdateReducer,
     productCreate: productCreateReducer,
     productUpdate: productUpdateReducer,
     productDelete: productDeleteReducer,
