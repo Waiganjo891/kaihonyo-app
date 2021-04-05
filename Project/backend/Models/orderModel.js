@@ -21,11 +21,12 @@ paymentMethod: { type: String, required: true },
 itemsPrice: {type: Number, required: true},
 totalPrice: {type: Number, required: true},
 user: {type: mongoose.Schema.Types.ObjectId, 
-    ref: 'User', required: true},
+    ref: "User", required: true},
+seller: { type: mongoose.Schema.Types.ObjectID, ref: "User" },
 isPaid: {type: Boolean, default: false},
 paidAt: {type: Date},
 }, {
     timestamps: true,
 });
-const Order = mongoose.model('Order', orderSchema);
+const Order = mongoose.model("Order", orderSchema);
 export default Order;

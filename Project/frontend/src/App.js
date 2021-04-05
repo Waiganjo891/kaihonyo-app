@@ -17,6 +17,7 @@ import ProductScreen from "./screens/ProductScreen.js";
 import ProfileScreen from "./screens/profileScreen.js";
 import RegisterScreen from "./screens/Register Screen.js";
 import SigninScreen from "./screens/signinScreen.js";
+import UserEditScreen from "./screens/userEditScreen.js";
 import UserListScreen from "./screens/userListScreen.js";
 
 function App() {
@@ -57,7 +58,22 @@ function App() {
                       (
                         <Link className="head" to="/signin">Sign in</Link>
                       )}
-                    {userInfo && userInfo.isAdmin && (
+                      {userInfo && userInfo.isSeller && (
+              <div className="dropdown">
+                <Link to="#admin">
+                  Seller <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/productlist/seller">Products</Link>
+                  </li>
+                  <li>
+                    <Link to="/orderlist/seller">Orders</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
+              {userInfo && userInfo.isAdmin && (
               <div className="dropdown">
                 <Link className="head" to="#admin">
                   Admin <i className="fa fa-caret-down"></i>
@@ -92,6 +108,8 @@ function App() {
               <AdminRoute path="/orderlist" component={OrderListScreen}></AdminRoute>
               <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
               <AdminRoute path="/user/:id/edit" component={UserEditScreen}></AdminRoute>
+              <SellerRoute path="/productlist/seller" component={ProductListScreen}></SellerRoute>
+              <SellerRoute path="/orderlist/seller" component={OrderListScreen}></SellerRoute>
               <Route path="/" component={HomeScreen} exact></Route>
             </main>
             <footer className="row center">

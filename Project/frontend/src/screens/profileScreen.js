@@ -6,10 +6,12 @@ import MessageBox from "../components/MessageBox.js";
 import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants.js";
 
 export default function ProfileScreen() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [sellerName, setSellerName] = useState("");
+    const [sellerNumber, setSellerNumber] = useState("");
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const userDetails = useSelector((state) => state.userDetails);
@@ -24,6 +26,10 @@ export default function ProfileScreen() {
       } else {
         setName(user.name);
         setEmail(user.email);
+        if (user.seller) {
+          setSellerName(user.seller.name);
+          setSellerNumber(user.seller.number);
+        }
       }
     }, [dispatch, userInfo._id, user]);
   const submitHandler = (e) => {
@@ -31,7 +37,16 @@ export default function ProfileScreen() {
     if (password !== confirmPassword) {
         alert('Password and Confirm Password Are Not Matched');
       } else {
-        dispatch(updateUserProfile({ userId: user._id, name, email, password }));
+        dispatch(
+          updateUserProfile({
+            userId: user._id,
+            name,
+            email,
+            password,
+            sellerName,
+            sellerNumber,
+          })
+        );
       }
   };
   return (
@@ -93,6 +108,31 @@ export default function ProfileScreen() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               ></input>
             </div>
+            {user.isSeller && (
+              <>
+                <h2>Seller</h2>
+                <div>
+                  <label htmlFor="sellerName">Seller Name</label>
+                  <input
+                    id="sellerName"
+                    type="text"
+                    placeholder="Enter Seller Name"
+                    value={sellerName}
+                    onChange={(e) => setSellerName(e.target.value)}
+                  ></input>
+                </div>
+                <div>
+                  <label htmlFor="sellerNumber">Seller Number</label>
+                  <input
+                    id="sellerNumber"
+                    type="text"
+                    placeholder="Enter Seller Number"
+                    value={sellerNumber}
+                    onChange={(e) => setSellerNumber(e.target.value)}
+                  ></input>
+                </div>
+              </>
+            )}
             <div>
               <label />
               <button className="primary" type="submit">
