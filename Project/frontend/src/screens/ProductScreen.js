@@ -45,6 +45,16 @@ export default function ProductScreen(props) {
                 <div className="col-1">
                     <div className="card card-body">
                         <ul>
+                        <li>
+                    Seller{' '}
+                    <h2>
+                      <Link to={`/seller/${product.seller._id}`}>
+                        {product.seller.seller.name}
+                      </Link>
+                    </h2>
+                    <div>Number</div>
+                    {product.seller.seller.number}
+                  </li>
                             <li>
                                 <div className="row">
                                     <div>Price</div>
