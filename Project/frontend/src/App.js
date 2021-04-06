@@ -4,6 +4,7 @@ import { BrowserRouter, Link, Route} from "react-router-dom";
 import { signout } from "./actions/userActions.js";
 import AdminRoute from "./components/AdminRoute.js";
 import PrivateRoute from "./components/PrivateRoute.js";
+import SellerRoute from "./components/sellerRoute.js";
 import CartScreen from "./screens/cartScreen.js";
 import HomeScreen from "./screens/HomeScreen.js";
 import OrderHistoryScreen from "./screens/OrderHistoryScreens.js";
@@ -16,6 +17,7 @@ import ProductListScreen from "./screens/productListScreens.js";
 import ProductScreen from "./screens/ProductScreen.js";
 import ProfileScreen from "./screens/profileScreen.js";
 import RegisterScreen from "./screens/Register Screen.js";
+import SellerScreen from "./screens/sellerScreen.js";
 import SigninScreen from "./screens/signinScreen.js";
 import UserEditScreen from "./screens/userEditScreen.js";
 import UserListScreen from "./screens/userListScreen.js";
@@ -94,6 +96,7 @@ function App() {
                 </div>
             </header>
             <main>
+            <Route path="/seller/:id" component={SellerScreen}></Route>
               <Route path="/cart/:id?" component={CartScreen}></Route>
               <Route path="/product/:id" component={ProductScreen} exact></Route>
               <AdminRoute path="/product/:id/edit" component={ProductEditScreen} exact></AdminRoute>
