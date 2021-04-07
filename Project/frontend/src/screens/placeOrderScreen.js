@@ -32,6 +32,7 @@ export default function PlaceOrderScreen(props) {
             <CheckoutSteps step1 step2 step3></CheckoutSteps>
             <div className="row top">
                 <div className="col-2">
+                <Link to="/payment"><strong>Back</strong></Link>
                     <ul>
                     <li>
               <div className="card card-body">
@@ -69,12 +70,8 @@ export default function PlaceOrderScreen(props) {
                     <div className="card card-body">
                         <ul>
                             <li>
-                                <h2>Product price</h2>
-                            </li>
-                            <li>
                                 <div className="row">
-                                    <div><strong>Total </strong></div>
-                                    <div><strong>{item.qty}</strong></div>
+                                    <div><strong>Product price </strong></div>
                                     <div><strong>Ksh{cart.totalPrice.toLocaleString("ksh")}</strong></div>
                                 </div>
                             </li>

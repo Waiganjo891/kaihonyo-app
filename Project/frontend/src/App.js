@@ -107,8 +107,8 @@ function App() {
               <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
               <PrivateRoute path="/payment" component={PaymentMethodScreen}></PrivateRoute>
               <PrivateRoute path="/order/:id" component={OrderScreen}></PrivateRoute>
-              <AdminRoute path="/productlist" component={ProductListScreen}></AdminRoute>
-              <AdminRoute path="/orderlist" component={OrderListScreen}></AdminRoute>
+              <AdminRoute path="/productlist" component={ProductListScreen} exact></AdminRoute>
+              <AdminRoute path="/orderlist" component={OrderListScreen} exact></AdminRoute>
               <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
               <AdminRoute path="/user/:id/edit" component={UserEditScreen}></AdminRoute>
               <SellerRoute path="/productlist/seller" component={ProductListScreen}></SellerRoute>

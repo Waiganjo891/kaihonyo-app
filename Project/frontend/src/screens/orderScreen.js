@@ -56,6 +56,7 @@ const successPaymentHandler = (paymentResult) => {
   ) : (
     <div>
       <h1>Receipt </h1>
+      <Link to="/">Back to Home page </Link>
       <div className="row top">
         <div className="col-2">
           <ul>
@@ -108,15 +109,12 @@ const successPaymentHandler = (paymentResult) => {
           <div className="card card-body">
             <ul>
               <li>
-                <h2>Total price</h2>
-              </li>
-              <li>
                 <div className="row">
                   <div>
-                    <strong> Order Total</strong>
+                   <p><strong> Product price</strong></p> 
                   </div>
                   <div>
-                    <strong>Ksh{order.totalPrice.toFixed(2)}</strong>
+                    <strong>Ksh{order.totalPrice.toLocaleString("ksh")}</strong>
                   </div>
                 </div>
               </li>

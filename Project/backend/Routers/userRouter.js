@@ -7,7 +7,7 @@ import { generateToken, isAdmin, isAuth } from "../util.js";
 
 const userRouter = express.Router();
 userRouter.get("/seed", expressAsyncHandler(async(req, res) =>{
-    await User.deleteMany({});
+    //await User.deleteMany({});
     const createUsers = await User.insertMany(data.users);
     res.send({createUsers});
 })

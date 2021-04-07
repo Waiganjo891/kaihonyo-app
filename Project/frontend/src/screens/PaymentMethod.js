@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { savePaymentMethod } from "../actions/cartActions.js";
 import CheckoutSteps from "../components/CheckoutSteps.js";
 
@@ -14,6 +15,7 @@ export default function PaymentMethodScreen(props) {
   return (
     <div>
       <CheckoutSteps step1 step2></CheckoutSteps>
+      <Link to="/cart"><strong>Back</strong></Link>
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>Pay using</h1>
