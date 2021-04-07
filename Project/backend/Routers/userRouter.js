@@ -7,7 +7,7 @@ import { generateToken, isAdmin, isAuth } from "../util.js";
 
 const userRouter = express.Router();
 userRouter.get("/seed", expressAsyncHandler(async(req, res) =>{
-    //await User.remove({});
+    await User.deleteMany({});
     const createUsers = await User.insertMany(data.users);
     res.send({createUsers});
 })
@@ -86,7 +86,10 @@ userRouter.get("/:id", expressAsyncHandler(async (req, res) => {
     })
   );
 
-  userRouter.get( "/", isAuth, isAdmin,
+  userRouter.get(
+    "/",
+    isAuth,
+    isAdmin,
     expressAsyncHandler(async (req, res) => {
       const users = await User.find({});
       res.send(users);
@@ -100,7 +103,7 @@ userRouter.get("/:id", expressAsyncHandler(async (req, res) => {
     expressAsyncHandler(async (req, res) => {
       const user = await User.findById(req.params.id);
       if (user) {
-        if (user.email === "admin@example.com") {
+        if (user.email === "waiganjothiongo@gmail.com") {
           res.status(400).send({ message: "Can Not Delete Admin User" });
           return;
         }
@@ -113,7 +116,7 @@ userRouter.get("/:id", expressAsyncHandler(async (req, res) => {
   );
 
   userRouter.put(
-    '/:id',
+    "/:id",
     isAuth,
     isAdmin,
     expressAsyncHandler(async (req, res) => {
@@ -121,8 +124,8 @@ userRouter.get("/:id", expressAsyncHandler(async (req, res) => {
       if (user) {
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
-        user.isSeller = req.body.isSeller || user.isSeller;
-        user.isAdmin = req.body.isAdmin || user.isAdmin;
+        user.isSeller = Boolean(req.body.isSeller);
+        user.isAdmin = Boolean(req.body.isAdmin);
         const updatedUser = await user.save();
         res.send({ message: 'User Updated', user: updatedUser });
       } else {

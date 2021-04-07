@@ -7,6 +7,11 @@ const data = {
             email: 'waiganjothiongo@gmail.com',
             password: bcrypt.hashSync('waiganjo@1234', 8),
             isAdmin: true,
+            isSeller: true,
+            seller: {
+              name: 'Kaihonyo',
+              number: '0791179919',
+            },
         },
         {
             name: 'John',
