@@ -31,7 +31,7 @@ productRouter.get(
         } else {
           res
             .status(500)
-            .send({ message: 'No seller found. first run /api/users/seed' });
+            .send({ message: "No product found" });
         }
     })
 );

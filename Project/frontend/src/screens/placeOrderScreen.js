@@ -35,15 +35,14 @@ export default function PlaceOrderScreen(props) {
                     <ul>
                     <li>
               <div className="card card-body">
-                <h2>Payment</h2>
                 <p>
-                  <strong>Method:</strong> {cart.paymentMethod}
+                  <strong>Pay using:</strong> {cart.paymentMethod}
                 </p>
               </div>
               </li>
                         <li>
                             <div className="card card-body">
-                                <h2>Order Items</h2>
+                                <h2>Product list</h2>
                                 <ul>
                         {cart.cartItems.map((item) => (
                                 <li key={item.product}>
@@ -70,11 +69,12 @@ export default function PlaceOrderScreen(props) {
                     <div className="card card-body">
                         <ul>
                             <li>
-                                <h2>Order Summary</h2>
+                                <h2>Product price</h2>
                             </li>
                             <li>
                                 <div className="row">
                                     <div><strong>Total </strong></div>
+                                    <div><strong>{item.qty}</strong></div>
                                     <div><strong>Ksh{cart.totalPrice.toLocaleString("ksh")}</strong></div>
                                 </div>
                             </li>

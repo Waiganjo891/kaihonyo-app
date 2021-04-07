@@ -55,15 +55,14 @@ const successPaymentHandler = (paymentResult) => {
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div>
-      <h1>Order {order._id}</h1>
+      <h1>Receipt </h1>
       <div className="row top">
         <div className="col-2">
           <ul>
             <li>
               <div className="card card-body">
-                <h2>Payment</h2>
                 <p>
-                  <strong>Method:</strong> {order.paymentMethod}
+                  <strong>Pay using:</strong> {order.paymentMethod}
                 </p>
                 {order.isPaid ? (
                   <MessageBox variant="success">
@@ -76,7 +75,7 @@ const successPaymentHandler = (paymentResult) => {
             </li>
             <li>
               <div className="card card-body">
-                <h2>Order Items</h2>
+                <h2>Product list</h2>
                 <ul>
                   {order.orderItems.map((item) => (
                     <li key={item.product}>
@@ -109,13 +108,7 @@ const successPaymentHandler = (paymentResult) => {
           <div className="card card-body">
             <ul>
               <li>
-                <h2>Order Summary</h2>
-              </li>
-              <li>
-                <div className="row">
-                  <div>Items</div>
-                  <div>Ksh{order.itemsPrice.toFixed(2)}</div>
-                </div>
+                <h2>Total price</h2>
               </li>
               <li>
                 <div className="row">
