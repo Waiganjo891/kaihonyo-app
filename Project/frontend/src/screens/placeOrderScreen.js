@@ -72,7 +72,7 @@ export default function PlaceOrderScreen(props) {
                             <li>
                                 <div className="row">
                                     <div><strong>Product price </strong></div>
-                                    <div><strong>Ksh{cart.totalPrice.toLocaleString("ksh")}</strong></div>
+                                 <div className="price">Ksh {cart.totalPrice.toLocaleString("ksh")}</div>
                                 </div>
                             </li>
                             <li>

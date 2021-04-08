@@ -113,8 +113,8 @@ const successPaymentHandler = (paymentResult) => {
                   <div>
                    <p><strong> Product price</strong></p> 
                   </div>
-                  <div>
-                    <strong>Ksh{order.totalPrice.toLocaleString("ksh")}</strong>
+                  <div className="price">
+                  Ksh{order.totalPrice.toLocaleString("ksh")}
                   </div>
                 </div>
               </li>

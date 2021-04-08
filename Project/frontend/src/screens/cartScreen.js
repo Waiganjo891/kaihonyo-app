@@ -77,8 +77,9 @@ export default function CartScreen(props) {
                     <ul>
                         <li>
             <h2> 
-                Total sum {cartItems.reduce((a, c) => a + c.qty, 0)} : Ksh 
+                Price: <div className="price"> {cartItems.reduce((a, c) => a + c.qty, 0)} : Ksh 
                 {cartItems.reduce((a, c) => a + c.price * c.qty, 0).toLocaleString("ksh")}
+                </div>
                 </h2>
                         </li>
                         <li>

@@ -14,7 +14,7 @@ export default function Product(props) {
                             </Link>
                             <Rating rating={product.rating} numReviews={product.numReviews}></Rating>           
                             <div className="row">
-                                <div className="price">Kshj{product.price}</div>
+                                <div className="price">Ksh{product.price.toLocaleString("ksh")}</div>
                             <div>
                                 <Link to={`/seller/${product.seller._id}`}>
                                     {product.seller.name}
