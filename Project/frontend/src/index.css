@@ -310,3 +310,17 @@ img.large{
 .active {
   font-weight: bold;
 }
+.t { 
+  border-collapse: collapse;
+}
+.t td {
+  width: 75%;
+  padding: 0.5rem;
+  border: 0.1rem solid #e4e4e4;
+}
+.t th {
+  text-align: left;
+  border: 0.1rem solid #e4e4e4;
+  padding: 0.5rem;
+  width: 25%;
+}

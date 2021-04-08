@@ -6,8 +6,10 @@ import { listProducts } from "../actions/productActions.js";
 import { useParams } from "react-router";
 import Product from "../components/product.js";
 import { Link } from "react-router-dom";
+import { prices, ratings } from "../utils.js";
+import Rating from "../components/Rating.js";
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
 const { name = "all", category = "all", min = 0, max = 0, rating = 0, order = 'newest',} = useParams();
 const dispatch = useDispatch();
 const productList = useSelector(state => state.productList);

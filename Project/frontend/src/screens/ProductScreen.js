@@ -101,11 +101,39 @@ export default function ProductScreen(props) {
                     </div>
                 </div>
             </div>
-            
+            <h2>Product Details</h2>
+            <table className = "t">
+            <tr>
+              <th>Product Name</th>
+              <td>{product.name}</td>
+              </tr>
+                  <tr>
+                  <th>Product price</th>
+                      <td>Ksh {''}{product.price.toLocaleString("ksh")}</td>
+                      </tr>
+                      <tr>
+                      <th>Brand</th>
+                      <td>{product.brand}</td>
+                      </tr>
+                      <tr>
+                      <th>Description</th>
+                      <td>{product.description}</td>
+                      </tr>
+                      <tr>
+                      <th>Category</th>
+                      <td>{product.category}</td>
+                  </tr>
+                  <tr>
+                      <th>Seller Name</th>
+                      <td>{product.seller.seller.name}</td>
+                  </tr>
+                  <tr>
+                      <th>Seller Name</th>
+                      <td>{product.seller.seller.number}</td>
+                  </tr>
+              </table>
                 </div>
-        )
-        
-      }
+                )}
 
                 </div>
     );
