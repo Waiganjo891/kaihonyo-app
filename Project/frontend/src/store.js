@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { cartReducer } from "./reducers/cartReducer.js";
 import { orderCreateReducer, orderDeleteReducer, orderDetailsReducer, orderListReducer, orderMineListReducer, 
     orderPayReducer } from "./reducers/orderReducers.js";
-import { productCategoryListReducer, productCreateReducer, productDeleteReducer, productDetailsReducer, 
+import {productCategoryListReducer, productCreateReducer, productDeleteReducer, productDetailsReducer, 
     productListReducer, productReviewCreateReducer, productUpdateReducer } from "./reducers/productReducers.js";
 import { userDeleteReducer, userDetailsReducer, userListReducer, userRegisterReducer, userSigninReducer, 
     userUpdateProfileReducer, userUpdateReducer} from "./reducers/userReducer.js";

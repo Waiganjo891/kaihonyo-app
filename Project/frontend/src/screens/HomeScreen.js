@@ -10,7 +10,7 @@ import { prices, ratings } from "../utils.js";
 import Rating from "../components/Rating.js";
 
 export default function HomeScreen(props) {
-const { name = "all", category = "all", min = 0, max = 0, rating = 0, order = 'newest', pageNumber = 1, } = useParams();
+const { name = "all", category = "all", min = 0, max = 0, rating = 0, order = 'newest', pageNumber = 1,} = useParams();
 const dispatch = useDispatch();
 const productList = useSelector(state => state.productList);
 const {loading, error, products, page, pages } = productList;
@@ -62,7 +62,7 @@ const {
       </div>
       <div className="row top">
         <div className="col-1">
-          <h3>Department</h3>
+          <h3>Categories</h3>
           <div>
             {loadingCategories ? (
               <LoadingBox></LoadingBox>
