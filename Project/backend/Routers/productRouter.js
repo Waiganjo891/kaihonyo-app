@@ -7,9 +7,12 @@ import { isAdmin, isAuth, isSellerOrAdmin } from "../util.js";
 const productRouter = express.Router();
 
 productRouter.get("/", expressAsyncHandler(async (req, res) =>{
+  const pageSize = 3;
+  const page = Number(req.query.pageNumber) || 1;
   const seller = req.query.seller || "";
   const name = req.query.name || "";
   const category = req.query.category || "";
+  const brand = req.query.brand || "";
   const order = req.query.order || '';
   const min =
     req.query.min && Number(req.query.min) !== 0 ? Number(req.query.min) : 0;
@@ -23,6 +26,7 @@ productRouter.get("/", expressAsyncHandler(async (req, res) =>{
   const sellerFilter = seller ? { seller } : {};
   const nameFilter = name ? { name: { $regex: name, $options: "i" } } : {};
   const categoryFilter = category ? { category } : {};
+  const brandFilter = brand ? { brand } : {};
   const priceFilter = min && max ? { price: { $gte: min, $lte: max } } : {};
   const ratingFilter = rating ? { rating: { $gte: rating } } : {};
   const sortOrder =
@@ -34,16 +38,28 @@ productRouter.get("/", expressAsyncHandler(async (req, res) =>{
       ? { rating: -1 }
       : { _id: -1 };
 
+      const count = await Product.countDocuments({
+        ...sellerFilter,
+        ...nameFilter,
+        ...categoryFilter,
+        ...priceFilter,
+        ...ratingFilter,
+        ...brandFilter,
+      });
+
   const products = await Product.find({
     ...sellerFilter,
     ...nameFilter,
     ...categoryFilter,
     ...priceFilter,
     ...ratingFilter,
+    ...brandFilter,
   })
   .populate("seller", "seller.name seller.number")
-  .sort(sortOrder);
-    res.send(products);
+.sort(sortOrder)
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
+    res.send({ products, page, pages: Math.ceil(count / pageSize) });
 })
 );
 
@@ -53,7 +69,15 @@ productRouter.get(
     const categories = await Product.find().distinct("category");
     res.send(categories);
   })
-)
+);
+
+productRouter.get(
+  '/brand',
+  expressAsyncHandler(async (req, res) => {
+    const brand = await Product.find().distinct('brand');
+    res.send(brand);
+  })
+);
 
 productRouter.get(
     "/data", expressAsyncHandler(async (req, res) => {

@@ -4,7 +4,7 @@ import { PRODUCT_CATEGORY_LIST_FAIL, PRODUCT_CATEGORY_LIST_REQUEST, PRODUCT_CATE
   PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_REVIEW_CREATE_FAIL,  PRODUCT_REVIEW_CREATE_REQUEST, 
   PRODUCT_REVIEW_CREATE_SUCCESS,  PRODUCT_UPDATE_FAIL,PRODUCT_UPDATE_REQUEST, PRODUCT_UPDATE_SUCCESS } from "../constants/productConstants.js"
 
-  export const listProducts = ({ seller = "", name = "", category = "", order = '', min = 0, max = 0, rating = 0,}) => async (
+  export const listProducts = ({ pageNumber = "", seller = "", name = "", category = "", order = '', min = 0, max = 0, rating = 0,}) => async (
     dispatch
   ) => {
     dispatch({
@@ -12,7 +12,7 @@ import { PRODUCT_CATEGORY_LIST_FAIL, PRODUCT_CATEGORY_LIST_REQUEST, PRODUCT_CATE
     });
     try {
       const { data } = await Axios.get(
-        `/api/products?seller=${seller}&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}&order=${order}`
+        `/api/products?pageNumber=${pageNumber}&seller=${seller}&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}&order=${order}`
       );
         dispatch({type: PRODUCT_LIST_SUCCESS, payload: data });
     } catch(error){

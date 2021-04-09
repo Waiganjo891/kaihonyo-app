@@ -163,13 +163,14 @@ function App() {
               <Route path="/search/name/:name?" component={HomeScreen} exact></Route>
               <Route path="/search/category/:category" component={HomeScreen} exact></Route>
           <Route path="/search/category/:category/name/:name" component={HomeScreen} exact></Route>
-          <Route path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order"
+          <Route path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/pageNumber/:pageNumber"
             component={HomeScreen} exact></Route>
               <PrivateRoute path="/orderhistory" component={OrderHistoryScreen}></PrivateRoute>
               <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
               <PrivateRoute path="/payment" component={PaymentMethodScreen}></PrivateRoute>
               <PrivateRoute path="/order/:id" component={OrderScreen}></PrivateRoute>
               <AdminRoute path="/productlist" component={ProductListScreen} exact></AdminRoute>
+              <AdminRoute path="/productlist/pageNumber/:pageNumber" component={ProductListScreen} exact></AdminRoute>
               <AdminRoute path="/orderlist" component={OrderListScreen} exact></AdminRoute>
               <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
               <AdminRoute path="/user/:id/edit" component={UserEditScreen}></AdminRoute>
